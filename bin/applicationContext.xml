@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:property-placeholder location="classpath:sport.properties"/>
+    <!-- Define your beans here -->
+    
+      <!-- define the dependency -->
+ 	 <bean id="quotes"
+  	class="com.udemy.demo1.Quote" 
+  	scope="prototype"
+  	init-method="start"
+  	destroy-method="end">
+  	<property name="quotes" value="${quote.messages}"/>
+  	</bean>
+ 
+  
+  <bean id="myCoach1"
+  	class="com.udemy.demo1.HockeyCoach">
+  	<!-- <constructor-arg ref="quotes"/> -->
+  	<property name="motivationHandler" ref="quotes"/> 
+  	<property name="name" value="${Hockey.coach.name}"/>
+  	<property name="contact" value="${Hockey.coach.contact}"/>
+  </bean>
+
+	 <bean id="myCoach2"
+  	class="com.udemy.demo1.WrestlingCoach">
+  	<!-- <constructor-arg ref="quotes"/> -->
+  	<property name="motivationHandler" ref="quotes"/> 
+  	<property name="name" value="${Wrestling.coach.name}"/>
+  	<property name="contact" value="${Wrestling.coach.contact}"/>
+  </bean>
+  
+  <bean id="myCoach3"
+  	class="com.udemy.demo1.CricketCoach">
+  	<!-- <constructor-arg ref="quotes"/> -->
+  	<property name="motivationHandler" ref="quotes"/> 
+  	<property name="name" value="${Cricket.coach.name}"/>
+  	<property name="contact" value="${Cricket.coach.contact}"/>
+  </bean>
+  
+   <bean id="myCoach4"
+  	class="com.udemy.demo1.FootballCoach">
+  	
+  <!-- 	<constructor-arg ref="quotes"/>  // use this when passing property to constructor-->
+ 	<property name="motivationHandler" ref="quotes"/> 
+  	<property name="name" value="${football.coach.name}"/>
+  	<property name="contact" value="${football.coach.contact}"/>
+  </bean>
+  
+ 
+  	
+  	
+</beans>
+
+
+
+
+
